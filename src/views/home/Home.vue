@@ -18,6 +18,7 @@
           :collapse="isCollapse"
           :collapse-transition="false"
           router
+          :default-active="activePath"
         >
           <el-submenu
             :index="item.id + ''"
@@ -32,6 +33,7 @@
               :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
+              @click="subItemClick('/' + subItem.path)"
             >
               <template slot="title">
                 <i class="el-icon-menu"></i>
@@ -62,12 +64,14 @@ export default {
         102: "iconfont icon-danju",
         145: "iconfont icon-baobiao",
       },
-      isCollapse: false
+      isCollapse: false,
+      activePath: ''
     };
   },
   created() {
     //获取菜单列表
     this.getMenuList();
+    this.activePath = window.sessionStorage.getItem('activePath');
   },
   computed: {
     istoggle() {
@@ -87,7 +91,11 @@ export default {
     },
     //菜单栏缩放
     toggleClcik() {
-        this.isCollapse = !this.isCollapse;
+      this.isCollapse = !this.isCollapse;
+    },
+    subItemClick(activePath) {
+      window.sessionStorage.setItem("activePath",activePath);
+      this.activePath = activePath;
     }
   },
 };
