@@ -16,6 +16,7 @@
             placeholder="请输入搜索内容"
             v-model="params.query"
             clearable
+            @change="getUsersList"
             @clear="getUsersList"
           >
             <el-button
@@ -175,7 +176,7 @@ export default {
       params: {
         query: "",
         pagenum: 1,
-        pagesize: 2,
+        pagesize: 10,
       },
       usersList: [],
       total: 0,
