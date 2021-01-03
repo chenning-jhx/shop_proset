@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
+import TreeTable from 'vue-table-with-tree-grid'
 
 // 导入element-ui
 import Element from "element-ui"
@@ -13,6 +14,7 @@ import './assets/fonts/iconfont.css'
 Vue.config.productionTip = false;
 
 Vue.use(Element);
+Vue.use(TreeTable);
 
 //配置请求根路径
 Vue.prototype.$http = axios;
