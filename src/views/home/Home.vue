@@ -21,18 +21,18 @@
           :default-active="activePath"
         >
           <el-submenu
-            :index="item.id + ''"
             v-for="item in menuList"
             :key="item.id"
+            :index="item.id + ''"
           >
             <template slot="title">
               <i :class="iconsList[item.id]"></i>
               <span>{{ item.authName }}</span>
             </template>
             <el-menu-item
-              :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
+              :index="'/' + subItem.path"
               @click="subItemClick('/' + subItem.path)"
             >
               <template slot="title">

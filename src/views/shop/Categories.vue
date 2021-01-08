@@ -317,10 +317,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .el-breadcrumb,
 .add-button {
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .el-pagination {
