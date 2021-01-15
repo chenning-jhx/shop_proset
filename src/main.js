@@ -16,6 +16,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 //导入阿里字体图标
 import './assets/fonts/iconfont.css'
 
+//导入nprogress进度条插件
+import Nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 Vue.config.productionTip = false;
 
 Vue.use(Element);
@@ -33,7 +37,16 @@ axios.interceptors.request.use((config) => {
   // console.log(config);
   //请求头中添加Authorization 为token值
   config.headers.Authorization = window.sessionStorage.getItem('token');
+  // 在request拦截器中，显示nprogresss进度条，Nprogress.start()
+  Nprogress.start()
   return config;
+})
+
+//axios 响应拦截器
+axios.interceptors.response.use(config => {
+  // 在response拦截器中，隐藏nprogress进度条，Nprogress.done()
+  Nprogress.done()
+  return config
 })
 
 //设置公共请求URL
